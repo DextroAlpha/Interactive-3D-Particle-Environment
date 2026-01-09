@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>3D Particles — Hand Controlled</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='8' fill='%23ffffff'/%3E%3C/svg%3E">
+  <style>
+    html,body{margin:0;height:100%;background:#000;color:#ddd;font-family:Arial}
+    #overlay{position:fixed;left:12px;top:12px;z-index:10;background:rgba(0,0,0,0.45);padding:8px 10px;border-radius:6px;max-width:280px}
+    #status{font-weight:600}
+    #canvas-container{width:100%;height:100%}
+    .ctrl {margin-top:8px;font-size:13px}
+    .ctrl label{display:block;margin-bottom:4px}
+    .ctrl input[type=range]{width:240px}
+    .ctrl .val{display:inline-block;width:56px;margin-left:8px;text-align:right}
+  </style>
+</head>
+<body>
+  <div id="overlay">
+    <div id="status">Connecting to hand server...</div>
+    <div style="font-size:12px;margin-top:6px">Right hand: pinch shapes (index=sphere, middle=cube, ring=pyramid, pinky=star)</div>
+    <div style="font-size:12px;margin-top:4px">Left hand: index=speed, middle=zoom (move hand close/far), ring=rotation, pinky=freeze</div>
+    <div class="ctrl">
+      <label>Particle Count: <span id="particleCountVal">5000</span></label>
+      <input id="particleCount" type="range" min="1000" max="10000" step="500" value="5000">
+    </div>
+    <div class="ctrl">
+      <label>Particle Size: <span id="particleSizeVal">0.035</span></label>
+      <input id="particleSize" type="range" min="0.005" max="0.12" step="0.005" value="0.035">
+    </div>
+    <div class="ctrl">
+      <label>Color Intensity: <span id="colorIntensityVal">1.0</span></label>
+      <input id="colorIntensity" type="range" min="0.2" max="2.0" step="0.05" value="1.0">
+    </div>
+  </div>
+  <div id="canvas-container"></div>
+  <!-- Use ES module version of Three.js and load app as module -->
+  <script type="module" src="particle_app.js"></script>
+</body>
+</html>
+
